@@ -1,7 +1,6 @@
 import { Button, createStyles, Grid, Paper, TextField, Theme } from '@material-ui/core'
 import { withStyles, WithStyles } from '@material-ui/styles'
 import React from 'react'
-import MyInput from '../ui/Input/MyInput'
 
 //import './CreateNewTrip.css'
 
