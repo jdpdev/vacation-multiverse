@@ -1,0 +1,10 @@
+.create-new-trip {
+    height: 10em;
+    color: #eee;
+}
+
+.create-new-trip div {
+    display: flex;
+    column-gap: 1em;
+    margin-bottom: 1em;
+}

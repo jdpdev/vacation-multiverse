@@ -1,28 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
+
+//import './App.css';
 import { AppStore } from './state/Store';
+import CreateNewTrip from './components/CreateNewTrip/CreateNewTrip';
+
+
+const theme = createTheme()
 
 function App() {
   return (
-    <AppStore>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    </AppStore>
+    <MuiThemeProvider theme={theme}>
+      <AppStore>
+        <div className='new-trip-container'>
+          <CreateNewTrip />
+        </div>
+      </AppStore>
+    </MuiThemeProvider>
   );
 }
 

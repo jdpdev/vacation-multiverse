@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  color: #eee;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -14,7 +20,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +41,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.new-trip-container {
+  padding: 2em;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+
+  flex: 0 0 auto;
 }

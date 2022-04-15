@@ -1,17 +1,7 @@
-import React, { createContext, Dispatch, useReducer } from 'react'
-import { AppState, initialState } from './appState';
+import React, { useReducer } from 'react'
+import { initialState } from './appState';
 import { reducer } from './reducer';
-import { Action } from './action';
-
-interface AppContextType {
-    state: AppState,
-    dispatch: Dispatch<Action>
-}
-
-export const AppContext = createContext<AppContextType>({
-    state: initialState,
-    dispatch: () => {}
-})
+import { AppContext } from './context';
 
 interface StoreProps {
     children: JSX.Element
