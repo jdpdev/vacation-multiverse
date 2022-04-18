@@ -9,17 +9,19 @@ export interface NewTripAction extends Action {
 
 interface NewTripActionPayload {
     name: string,
-    id: string
+    id: string,
+    start: Date,
+    end: Date
 }
 
 export const NEW_TRIP = 'new-trip-action'
 
-export function createNewTripAction(name: string): NewTripAction {
+export function createNewTripActionPayload(name: string, id: string, start: Date, end: Date): NewTripActionPayload {
     return {
-        type: NEW_TRIP,
-        payload: {
-            name
-        }
+        name,
+        id,
+        start,
+        end
     }
 }
 
