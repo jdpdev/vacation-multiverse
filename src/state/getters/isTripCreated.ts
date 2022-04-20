@@ -1,5 +1,6 @@
-import { AppState, initialState } from "../appState";
+import { initialState } from "../tripSlice";
+import { TripState } from "../TripState";
 
-export function isTripCreated(state: AppState): boolean {
-    return state.tripId !== initialState.tripId
+export function isTripCreated(state: TripState): boolean {
+    return state.name !== initialState.name
 }

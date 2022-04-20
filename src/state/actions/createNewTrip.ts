@@ -1,4 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { createSimpleEvent } from "../../data/event";
+import { serializeDate } from "../../utils/serializeDate";
 import { Action } from "../action";
 import { AppState } from "../appState";
 import { TripState } from "../TripState";
@@ -25,7 +27,13 @@ export function createNewTripActionPayload(name: string, id: string, start: Date
     }
 }
 
-export function createNewTripReducer(state: TripState, action: PayloadAction<NewTripActionPayload>) {
-    state.name = action.payload.name
-    state.id = action.payload.name
+export function createNewTripReducer(state: TripState, { payload }: PayloadAction<NewTripActionPayload>) {
+    const { name, id, start, end } = payload
+
+    state.name = name
+    state.id = id
+    state.events = [
+        createSimpleEvent('Arrival', serializeDate(start)),
+        createSimpleEvent('Departure', serializeDate(end))
+    ]
 }

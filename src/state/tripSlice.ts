@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { createNewTripReducer } from './actions/createNewTrip'
 import { TripState } from './TripState'
+import { AnyEvent } from '../data/event'
 
-const initialState: TripState = {
+export const initialState: TripState = {
     name: null,
-    id: null
+    id: null,
+    events: []
 }
 
 export const tripSlice = createSlice({

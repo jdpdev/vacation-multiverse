@@ -9,11 +9,10 @@ const styles = (theme: Theme) =>
     })
 
 interface Props extends WithStyles<typeof styles> {
-    onSetTripName: (name: string) => void
-    onSetTripDates: (start: Date, end: Date) => void
+    onSubmit: (name: string, start: Date, end: Date) => void
 }
 
-export function NameTripStep({ onSetTripName, onSetTripDates }: Props) {
+export function NameTripStep({ onSubmit }: Props) {
     const [tripName, setTripName] = useState('')
     const [startDate, setStartDate] = useState<Date|null>(null)
     const [endDate, setEndDate] = useState<Date|null>(null)
@@ -21,7 +20,7 @@ export function NameTripStep({ onSetTripName, onSetTripDates }: Props) {
 
     const onChangeName = (e: ChangeEvent<HTMLInputElement>) => setTripName(e.target.value)
 
-    const onSubmit = useCallback(() => {
+    const formSubmit = useCallback(() => {
         const errors: {[id:string]: string} = {}
         if (tripName === '') {
             errors['tripName'] = 'Trip name is required'
@@ -40,10 +39,9 @@ export function NameTripStep({ onSetTripName, onSetTripDates }: Props) {
         setFieldErros(errors)
 
         if (Object.keys(errors).length === 0) {
-            onSetTripName(tripName)
-            onSetTripDates(startDate!, endDate!)
+            onSubmit(tripName, startDate!, endDate!)
         }
-    }, [tripName, startDate, endDate, onSetTripName, onSetTripDates])
+    }, [tripName, startDate, endDate, onSubmit])
 
     return (
         <Grid
@@ -88,7 +86,7 @@ export function NameTripStep({ onSetTripName, onSetTripDates }: Props) {
                 />
             </Grid>
             <Grid item xs={12}>
-                <Button variant="contained" onClick={onSubmit}>
+                <Button variant="contained" onClick={formSubmit}>
                     Start Trip
                 </Button>
             </Grid>

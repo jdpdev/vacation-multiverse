@@ -1,17 +1,23 @@
-import { Datetime } from "./datetime";
 import { Location } from "./location";
 
 export type AnyEvent = SimpleEvent | LocationEvent | TravelEvent | LodgingEvent
 
 export interface SimpleEvent {
     name: string,
-    datetime: Datetime
+    dateStamp: string
+}
+
+export function createSimpleEvent(name: string, dateStamp: string): SimpleEvent {
+    return {
+        name,
+        dateStamp
+    }
 }
 
 export function getEmptyEvent(): SimpleEvent {
     return {
         name: '',
-        datetime: {}
+        dateStamp: ''
     }
 }
 
