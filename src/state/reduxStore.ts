@@ -1,10 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-
-import tripSlice from './tripSlice'
+import reduxstore from './tripSlice';
 
 export const store = configureStore({
     reducer: {
-        trip: tripSlice
+        trip: reduxstore
     }
 })
 

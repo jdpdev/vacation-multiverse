@@ -2,7 +2,6 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { createSimpleEvent } from "../../data/event";
 import { serializeDate } from "../../utils/serializeDate";
 import { Action } from "../action";
-import { AppState } from "../appState";
 import { TripState } from "../TripState";
 
 export interface NewTripAction extends Action {
