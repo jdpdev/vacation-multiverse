@@ -1,39 +1,28 @@
+import { DateTime, DateTypes } from "./datetime";
 import { Location } from "./location";
 
-export type AnyEvent = SimpleEvent | LocationEvent | TravelEvent | LodgingEvent
-
-export interface SimpleEvent {
-    name: string,
-    dateStamp: string
+export enum EventTypes {
+    TripStart,
+    TripEnd
 }
 
-export function createSimpleEvent(name: string, dateStamp: string): SimpleEvent {
-    return {
-        name,
-        dateStamp
-    }
-}
-
-export function getEmptyEvent(): SimpleEvent {
-    return {
-        name: '',
-        dateStamp: ''
-    }
-}
-
-export interface LocationEvent extends SimpleEvent {
+export interface CoreEvent {
+    type: EventTypes
+    name: string
+    id: string
+    datetime: DateTime
     location: Location
 }
 
-interface MultiEvent {
-    start: SimpleEvent,
-    end: SimpleEvent
-}
-
-export interface TravelEvent extends MultiEvent {
-    
-}
-
-export interface LodgingEvent extends MultiEvent {
-
+export function createInstanceEvent(type: EventTypes, name: string, dateStamp: string): CoreEvent {
+    return {
+        type,
+        name,
+        id: '',
+        datetime: {
+            type: DateTypes.Single,
+            datetime: dateStamp
+        },
+        location: { name: '' }
+    }
 }
