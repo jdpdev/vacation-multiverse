@@ -21,7 +21,8 @@ export function createInstanceEvent(type: EventTypes, name: string, dateStamp: s
         id: '',
         datetime: {
             type: DateTypes.Single,
-            datetime: dateStamp
+            datetime: dateStamp,
+            timeless: true
         },
         location: { name: '' }
     }
