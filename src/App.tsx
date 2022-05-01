@@ -12,13 +12,16 @@ import { green, lightBlue, pink, purple } from '@material-ui/core/colors';
 declare module '@material-ui/core/styles' {
   interface Theme {
     eventColors: {
-      simple: string;
+      duration: string
+      location: string
+      travel: string
+      lodging: string
     };
   }
   // allow configuration using `createTheme`
   interface ThemeOptions {
     eventColors?: {
-      simple: string
+      duration: string
       location: string
       travel: string
       lodging: string
@@ -28,7 +31,7 @@ declare module '@material-ui/core/styles' {
 
 const theme = createTheme({
   eventColors: {
-    simple: pink[400],
+    duration: pink[400],
     location: purple[600],
     travel: lightBlue[300],
     lodging: green[200]

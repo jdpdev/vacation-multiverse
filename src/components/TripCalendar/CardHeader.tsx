@@ -37,7 +37,7 @@ function getEventColor(event: CoreEvent, theme: Theme): string {
         default:
         case EventTypes.TripStart:
         case EventTypes.TripEnd:
-            return theme.eventColors.simple
+            return theme.eventColors.duration
     }
 }
 
