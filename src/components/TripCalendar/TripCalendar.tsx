@@ -25,7 +25,7 @@ function TripCalendar({ classes }: Props) {
                     </Grid>
                 </Grid>
                 <Grid container>
-                    { events.map(e => <EventCard event={e} />) }
+                    { events.map(e => <EventCard key={e.id} event={e} />) }
                 </Grid>
             </Grid>
         </Grid>

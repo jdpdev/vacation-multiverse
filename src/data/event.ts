@@ -18,7 +18,7 @@ export function createInstanceEvent(type: EventTypes, name: string, dateStamp: s
     return {
         type,
         name,
-        id: '',
+        id: `${Math.random()}`,
         datetime: {
             type: DateTypes.Single,
             datetime: dateStamp,
