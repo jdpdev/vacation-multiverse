@@ -1,34 +1,48 @@
-import React from 'react'
-import { createStyles, Grid, Paper, Theme } from '@material-ui/core'
+import React, { useCallback } from 'react'
+import { Grid, Paper, Theme } from '@material-ui/core'
 import { withStyles, WithStyles } from '@material-ui/styles'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { CoreEvent } from '../../data/event'
 import CardDateDisplay from './CardDateDisplay'
 import CardHeader from './CardHeader'
+import { useAppDispatch } from '../../state/reduxHooks'
+import { selectEvent } from '../../state/tripSlice'
+import { selectEventAction } from '../../state/actions/selectEvent'
 
-const styles = (theme: Theme) => createStyles({
-    grid: {
-        padding: '1em'
-    },
-    paper: {
-        border: '1px solid #666',
-        height: '15em'
-    },
-    eventColors: theme.eventColors
-})
+const useStyles = makeStyles<Theme, Props>(theme => 
+    createStyles({
+        grid: {
+            padding: '1em'
+        },
+        paper: {
+            border: '1px solid #666',
+            height: '15em'
+        },
+        eventColors: theme.eventColors
+    })
+)
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     event: CoreEvent
 }
 
-function EventCard({ classes, event }: Props) {
+function EventCard({ event }: Props) {
+    const dispatch = useAppDispatch()
+    const classes = useStyles({ event })
+
+    const onSelectEvent = useCallback(() => {
+        dispatch(selectEvent(selectEventAction(event.id)))
+    }, [event])
+
     return (
-        <Grid item xs={6} md={4} lg={2} className={classes.grid}>
-            <Paper className={classes.paper}>
-                <CardHeader event={event} />
-                <CardDateDisplay event={event} />
-            </Paper>
-        </Grid>
+        <Paper 
+            className={classes.paper}
+            onClick={onSelectEvent}
+        >
+            <CardHeader event={event} />
+            <CardDateDisplay event={event} />
+        </Paper>
     )
 }
 
-export default withStyles(styles)(EventCard)
+export default EventCard

@@ -4,4 +4,5 @@ export interface TripState {
     name: string | null
     id: string | null
     events: CoreEvent[]
+    selectedEvent: CoreEvent | null
 }
