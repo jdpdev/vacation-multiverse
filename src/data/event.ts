@@ -1,9 +1,11 @@
 import { DateTime, DateTypes } from "./datetime";
 import { Location } from "./location";
+import { Transportation } from "./transportation";
 
 export enum EventTypes {
     TripStart,
-    TripEnd
+    TripEnd,
+    Transportation
 }
 
 export interface CoreEvent {
@@ -11,7 +13,8 @@ export interface CoreEvent {
     name: string
     id: string
     datetime: DateTime
-    location: Location
+    location?: Location
+    transporation?: Transportation
 }
 
 export function createInstanceEvent(type: EventTypes, name: string, dateStamp: string): CoreEvent {
@@ -23,7 +26,6 @@ export function createInstanceEvent(type: EventTypes, name: string, dateStamp: s
             type: DateTypes.Single,
             datetime: dateStamp,
             timeless: true
-        },
-        location: { name: '' }
+        }
     }
 }

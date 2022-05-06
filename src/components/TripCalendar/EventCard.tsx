@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react'
 import { Grid, Paper, Theme } from '@material-ui/core'
-import { withStyles, WithStyles } from '@material-ui/styles'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { CoreEvent } from '../../data/event'
 import CardDateDisplay from './CardDateDisplay'

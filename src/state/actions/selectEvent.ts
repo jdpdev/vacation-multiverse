@@ -13,7 +13,6 @@ export function selectEventAction(id: string): SelectActionPayload {
 
 export function selectEventReducer(state: TripState, { payload }: PayloadAction<SelectActionPayload>) {
     const { id } = payload
-    console.log(id)
 
     if (id != null) {
         const event = state.events.find(e => e.id === id)
