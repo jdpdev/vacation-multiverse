@@ -10,7 +10,7 @@ const useStyles = makeStyles<Theme, Props>(theme =>
     createStyles({
         eventColors: theme.eventColors,
         detailers: {
-            padding: '1em'
+            padding: '0.5em'
         }
     })
 )
